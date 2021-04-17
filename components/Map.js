@@ -34,15 +34,7 @@ const Map = () => {
     return () => map.remove();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return (
-    <div>
-      <div className={styles.sidebarStyle}>
-        <div>
-          Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-        </div>
-      </div>
-      <div className={styles.mapContainer} ref={mapContainerRef} />
-    </div>
+  return ( <div className={styles.mapContainer} ref={mapContainerRef} />
   );
 };
 

@@ -1,20 +1,17 @@
-import Head from 'next/head'
 import Header from '@components/Header'
-import Footer from '@components/Footer'
 import Map from '@components/Map'
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-      </Head>
+ const Home = () => {
 
+
+  return (
+    <div>
       <main>
-        <Header title="Welcome to my app!" />
+        <Header/>
         <Map />
       </main>
-
-      <Footer />
     </div>
   )
 }
+
+export default Home;

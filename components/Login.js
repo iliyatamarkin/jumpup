@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactModalLogin from 'react-modal-login';
-
+import axios from 'axios';
 // import {facebookConfig, googleConfig} from "../social-config";
 
 export default class Sample extends React.Component {
@@ -33,25 +33,27 @@ export default class Sample extends React.Component {
         error: true
       })
     } else {
+
       this.onLoginSuccess('form');
     }
   }
 
-  onRegister() {
+  async onRegister() {
     console.log('__onRegister__');
-    console.log('login: ' + document.querySelector('#login').value);
     console.log('email: ' + document.querySelector('#email').value);
     console.log('password: ' + document.querySelector('#password').value);
 
-    const login = document.querySelector('#login').value;
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
 
-    if (!login || !email || !password) {
+    if (!email || !password) {
       this.setState({
         error: true
       })
     } else {
+      let res = await axios.post(process.env.NEXT_PUBLIC_SERVER+'/user/', { email,password })
+      console.log(res);
+      console.log(res.data);
       this.onLoginSuccess('form');
     }
   }
@@ -201,15 +203,6 @@ export default class Sample extends React.Component {
               }
             ],
             registerInputs: [
-              {
-                containerClass: 'RML-form-group',
-                label: 'Nickname',
-                type: 'text',
-                inputClass: 'RML-form-control',
-                id: 'login',
-                name: 'login',
-                placeholder: 'Nickname',
-              },
               {
                 containerClass: 'RML-form-group',
                 label: 'Email',
